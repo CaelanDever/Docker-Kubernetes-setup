@@ -86,15 +86,14 @@ Create a Dockerfile:
 
 Use a text editor to create a file named Dockerfile in the webapp directory.
 
-bash
-Copy code
+
 nano Dockerfile
 Add the Following Content to the Dockerfile:
 
 This Dockerfile will use an Nginx base image, copy a simple HTML file into the image, and configure Nginx to serve it.
 
 Dockerfile
-Copy code
+
 # Use the official Nginx image from the Docker Hub
 FROM nginx:alpine
 
@@ -198,6 +197,9 @@ Explanation: Removes the Docker image named my_webapp_image from your system. Th
 # Summary
 
 By following these steps, you install Docker, create a Dockerfile for your web application, build a Docker image, run a container from that image, and verify that the application is accessible through the server’s IP address or domain.
+
+<img width="893" alt="12`" src="https://github.com/user-attachments/assets/5fab9d8a-5b14-4a3f-b387-0bf11e64704e">
+
 
 Dockerfile:
 
