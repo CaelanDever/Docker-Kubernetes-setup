@@ -73,48 +73,59 @@ Docker image.
 
 c. Add the following content to the Dockerfile:
 
-#Use an official Node.js runtime as a parent image
-FROM node:14
+1. Create the Dockerfile
+Create a Directory for Your Docker Project:
 
-#Set the working directory in the container
-WORKDIR /usr/src/app
+bash
+Copy code
+mkdir webapp
+cd webapp
+Create a Dockerfile:
 
-#Copy package.json and package-lock.json to the container
-COPY package*.json ./
+Use a text editor to create a file named Dockerfile in the webapp directory.
 
-#Install dependencies
-RUN npm install
+bash
+Copy code
+nano Dockerfile
+Add the Following Content to the Dockerfile:
 
-#Copy the rest of the application files
-COPY . .
+This Dockerfile will use an Nginx base image, copy a simple HTML file into the image, and configure Nginx to serve it.
 
-#Set environment variables (if any)
-ENV PORT=3000
+Dockerfile
+Copy code
+# Use the official Nginx image from the Docker Hub
+FROM nginx:alpine
 
-#Expose the port the app runs on
+# Copy the static HTML file to the Nginx web root
+COPY index.html /usr/share/nginx/html/
 
-EXPOSE 3000
+# Expose port 80 to the outside world
+EXPOSE 80
 
-#Define the command to run the app
+# The default command to run when the container starts
+CMD ["nginx", "-g", "daemon off;"]
+Create the HTML File:
 
-CMD [ "npm", "start" ]
+Create an index.html file in the same directory.
 
-Explanation:
+nano index.html
+Add the Content for the Web Application:
 
-FROM node:14: Specifies the base image for the Docker container. In this case, it uses Node.js version 14.
 
-WORKDIR /usr/src/app: Sets the working directory inside the container. All subsequent commands are run from this directory.
-
-COPY package*.json ./: Copies package.json and package-lock.json (if present) into the working directory in the container.
-
-RUN npm install: Installs the dependencies specified in package.json.
-COPY . .: Copies the rest of your application’s files into the container.
-
-ENV PORT=3000: Sets an environment variable PORT to 3000. This is useful if your application relies on environment variables.
-
-EXPOSE 3000: Informs Docker that the container will listen on port 3000 at runtime.
-
-CMD [ "npm", "start" ]: Specifies the command to run when the container starts. Here, it starts your Node.js application.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Docker WebApp</title>
+</head>
+<body>
+    <h1>Welcome to the Docker Web Application!</h1>
+    <p>This application is served using Docker and Nginx.</p>
+    <p>Docker simplifies the deployment and scaling of applications.</p>
+    <p>Enjoy exploring Docker!</p>
+</body>
+</html>
 
 d. Save and exit the editor.
 
@@ -143,7 +154,6 @@ Explanation:
 
 --name webapp_container: Assigns the name webapp_container to the container for easy reference.
 
--p 80:3000: Maps port 80 on the host to port 3000 on the container. This allows you to access the application on port 80 of the server.
 
 my_webapp_image: Specifies the image to use for the container.
 
@@ -187,7 +197,40 @@ Explanation: Removes the Docker image named my_webapp_image from your system. Th
 
 By following these steps, you install Docker, create a Dockerfile for your web application, build a Docker image, run a container from that image, and verify that the application is accessible through the server’s IP address or domain.
 
-# Task 2: Building Kubernetes from Scratch
+Dockerfile:
+
+Dockerfile
+
+FROM nginx:alpine
+COPY index.html /usr/share/nginx/html/
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
+index.html:
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Docker WebApp</title>
+</head>
+<body>
+    <h1>Welcome to the Docker Web Application!</h1>
+    <p>This application is served using Docker and Nginx.</p>
+    <p>Docker simplifies the deployment and scaling of applications.</p>
+    <p>Enjoy exploring Docker!</p>
+</body>
+</html>
+Build and Run Commands:
+
+docker build -t your_image_name .
+
+docker run -d --name webapp_container -p 8080:80 your_image_name
+
+This will set up a Docker container that serves a simple web page with information about Docker. Let me know if you need any more help!
+
+# =============================================================================================================================================================================Task 2: Building Kubernetes from Scratch
 
 Building Kubernetes from scratch is a complex task but is a valuable learning experience. Below is a detailed guide to set up a Kubernetes cluster from scratch, focusing on the key components: etcd, kube-apiserver, kube-scheduler, kube-controller-manager, and kubelet.
 
