@@ -73,11 +73,13 @@ Docker image.
 
 c. Add the following content to the Dockerfile:
 
+<img width="225" alt="docc" src="https://github.com/user-attachments/assets/7b3b70ce-17de-4a6e-bf26-aa3b6e1022fa">
+
+
 1. Create the Dockerfile
 Create a Directory for Your Docker Project:
 
-bash
-Copy code
+
 mkdir webapp
 cd webapp
 Create a Dockerfile:
