@@ -415,12 +415,17 @@ d. Configure the Kube-scheduler: Create a kube-scheduler service file:
 sudo vim /etc/systemd/system/kube-scheduler.service
 Add the following content:
 
+On worker nodes, join them to the cluster by running the command generated during master node initialization:
+sudo kubeadm join <master_node_ip>:<port> --token <token> --discovery-token-ca-cert-hash <hash>
+
 [Unit]
 Description=Kubernetes Scheduler
 Documentation=https://kubernetes.io/docs/
 After=network.target
 
-[Service]
+
+[Service] <img width="525" alt="84" src="https://github.com/user-attachments/assets/fd7b517a-7b16-4506-bddb-94e12c1e0718">
+
 ExecStart=/usr/local/bin/kube-scheduler \
   --master=http://<Server-IP>:6443 \
   --kubeconfig=/etc/kubernetes/scheduler.conf
