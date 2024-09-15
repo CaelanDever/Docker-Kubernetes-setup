@@ -198,7 +198,8 @@ Explanation: Removes the Docker image named my_webapp_image from your system. Th
 
 By following these steps, you install Docker, create a Dockerfile for your web application, build a Docker image, run a container from that image, and verify that the application is accessible through the server’s IP address or domain.
 
-<img width="893" alt="12`" src="https://github.com/user-attachments/assets/5fab9d8a-5b14-4a3f-b387-0bf11e64704e">
+
+![photo_2024-09-15_02-05-40](https://github.com/user-attachments/assets/10f682e8-e454-48d4-94c5-e74eb3ba5fea)
 
 
 Dockerfile:
