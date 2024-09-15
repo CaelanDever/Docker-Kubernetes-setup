@@ -448,19 +448,29 @@ wget https://dl.k8s.io/v1.26.0/kubernetes-client-linux-amd64.tar.gz
 tar xzvf kubernetes-client-linux-amd64.tar.gz
 sudo mv kubernetes/client/bin/kubectl /usr/local/bin/
 
+<img width="454" alt="qwqw" src="https://github.com/user-attachments/assets/e49ba967-5db2-4927-9be2-0d9054936f81">
+
+
 # 5. Verify the Cluster
 a. Check Nodes:
 
 
 kubectl get nodes
+
+
 Expected Output: If successful, you’ll see your node listed. If not successful, you may get a connection error or refused connection message.
+
+<img width="351" alt="xq" src="https://github.com/user-attachments/assets/0bb602f1-b271-4414-8107-d3514c7f7d75">
+
+
 b. Troubleshoot Errors:
 
 Check Component Statuses:
 
-sudo systemctl status kube-apiserver
-sudo systemctl status kube-controller-manager
 sudo systemctl status kube-scheduler
+
+<img width="525" alt="84" src="https://github.com/user-attachments/assets/04aa0ced-8179-42b3-a30f-fbffbe83d88e">
+
 
 Check Logs:
 
@@ -469,15 +479,6 @@ sudo journalctl -u kube-controller-manager
 sudo journalctl -u kube-scheduler
 
 Verify Configuration Files: Ensure all configuration files and certificates are correctly set up and accessible by the Kubernetes components.
-
-Resources
-Kubernetes Documentation: For detailed instructions on configuring each component.
-
-
-Server World: Server World - Kubernetes Installation for additional guidance.
-
-
-This guide should provide a solid foundation for setting up Kubernetes from scratch. Adjust configurations and paths according to your specific setup and requirements.
 
 
 
